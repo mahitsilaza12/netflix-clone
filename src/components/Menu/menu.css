@@ -1,0 +1,16 @@
+@layer menuNavbar {
+    .navbar {
+        @apply w-full h-16 flex flex-wrap items-center  bg-gradient-to-b bg-[#0d0d0d] to-[#1a1717]  justify-between px-4 mb-24;
+    }
+    .menu-item {
+        @apply h-16  hidden sm:hidden md:hidden px-4 lg:flex xl:flex flex-wrap items-center;
+    }
+    .menu-item > ul {
+        @apply flex flex-wrap  items-center justify-start text-white/45 font-semibold gap-4 md:text-[55%] lg:text-[75%] xl:text-[100%];
+    }
+    .settings {
+        @apply h-16 items-center justify-end flex flex-wrap gap-4 w-full;
+    }
+}
+
+

@@ -1,0 +1,5 @@
+@layer card {
+    .card {
+        @apply xl:w-1/6 lg:w-2/6 md:w-1/2 w-full h-[450px] flex flex-wrap items-center justify-center p-3 mb-20
+    }
+}
