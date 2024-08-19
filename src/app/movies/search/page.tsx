@@ -25,7 +25,8 @@ export default function Search(): ReactElement {
         MovieService.searchKeyword(keyword)
             .then((res) => res.json())
             .then((data) => setSimilar(data.results));
-        MovieService.searchMovie(keyword!, currentPage)
+        
+        MovieService.searchMovie(keyword, currentPage)
             .then((res) => res.json())
             .then((data) => {
                 setFilms(data);
@@ -34,21 +35,18 @@ export default function Search(): ReactElement {
     }, [params, keyword, currentPage]);
 
     return (
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader isLoading={isLoading} />}>
             <h1 className='p-4 text-2xl'>
-                Results for {keyword} : {films.total_results} movie(s)
+                Résultats pour {keyword} : {films.total_results} film(s)
             </h1>
             <div className='p-4 text-2xl mb-4'>
-                More to explore :{' '}
-                {similar.map((item: any, index: any) => {
-                    return (
-                        <span className='capitalize mr-4 hover:text-blue-600' key={index}>
-                            <a href={`/movies/search?keyword=${item.name}`}>{item.name}</a> |
-                        </span>
-                    );
-                })}
+                Plus à explorer :{' '}
+                {similar.map((item: any, index: any) => (
+                    <span className='capitalize mr-4 hover:text-blue-600' key={index}>
+                        <a href={`/movies/search?keyword=${item.name}`}>{item.name}</a> |
+                    </span>
+                ))}
             </div>
-            {/* Render other content */}
         </Suspense>
     );
 }
